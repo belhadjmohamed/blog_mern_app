@@ -16,7 +16,7 @@ const secret = 'lfsdjfsjdpfjsofpoefpzoefjmjmm';
 
 app.use(cors(
     {credentials:true,
-     origin:['https://blog-mern-app-api.vercel.app'],
+     origin:['https://blog-mern-app-g9udh52uk-mohamed-belhadjs-projects.vercel.app/'],
      methods:["POST", "GET"]
     
     }
