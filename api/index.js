@@ -14,12 +14,14 @@ const fs = require('fs');
 const salt = bcrypt.genSaltSync(10);
 const secret = 'lfsdjfsjdpfjsofpoefpzoefjmjmm';
 
-app.use(cors({credentials:true,origin:'https://blog-mern-app-front-end.vercel.app'}));
+app.use(cors({credentials:true,origin:'https://blog-mern-app-api.vercel.app/'}));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/uploads',express.static(__dirname + '/uploads'));
 
-
+app.get('/',(req,res) => {
+    res.json("Hello");
+})
 mongoose.connect('mongodb+srv://user2000:test123@cluster0.6rjcjzf.mongodb.net/?retryWrites=true&w=majority');
 
 app.post('/register', async (req,res)=>{
