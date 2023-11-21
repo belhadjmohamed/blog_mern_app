@@ -13,7 +13,7 @@ export default function PostPage(){
     const {id} = useParams();
     useEffect( () => {
         console.log(id);
-        fetch('https://blog-mern-app-api.vercel.app/post/'+id)
+        fetch('http://localhost:4000/post/'+id)
         .then(response => {
             response.json().then(postInfo =>{
                 setPostInfo(postInfo);
