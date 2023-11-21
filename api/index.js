@@ -8,8 +8,8 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const cookieParser = require('cookie-parser');
 const multer = require('multer');
-const uploadMiddleware = multer({dest: 'uploads/'});
-const fs = require('fs');
+//const uploadMiddleware = multer({dest: 'uploads/'});
+//const fs = require('fs');
 
 const salt = bcrypt.genSaltSync(10);
 const secret = 'lfsdjfsjdpfjsofpoefpzoefjmjmm';
@@ -24,7 +24,7 @@ app.use(cors(
 ));
 app.use(cookieParser());
 app.use(express.json());
-app.use('/uploads',express.static(__dirname + '/uploads'));
+//app.use('/uploads',express.static(__dirname + '/uploads'));
 
 app.get("/",(req,res) => {
     res.json("Hello");
