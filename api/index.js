@@ -16,7 +16,7 @@ const secret = 'lfsdjfsjdpfjsofpoefpzoefjmjmm';
 
 app.use(cors(
     {credentials:true,
-     origin:['https://blog-mern-app-api.vercel.app'],
+     origin:['http://localhost:3000'],
      methods:["POST", "GET"]
     
     }
@@ -143,6 +143,5 @@ app.get('/post/:id',async (req,res) => {
 })
 
 app.listen(4000);
-//gXh3ljN7RhgzZUco
-//mongodb+srv://blog:gXh3ljN7RhgzZUco@cluster0.6rjcjzf.mongodb.net/?retryWrites=true&w=majority
+
 
