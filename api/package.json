@@ -1,4 +1,7 @@
 {
+  "engines":{
+    "node":"v20.9.0"
+  }
   "scripts" : {
     "vercel-build" : "echo"
   }
