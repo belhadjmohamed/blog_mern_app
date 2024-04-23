@@ -14,12 +14,21 @@ const fs = require('fs');
 const salt = bcrypt.genSaltSync(10);
 const secret = 'lfsdjfsjdpfjsofpoefpzoefjmjmm';
 
-app.use(cors({credentials:true,origin:'http://localhost:3000'}));
+app.use(cors(
+    {credentials:true,
+     origin:['http://localhost:3000'],
+     methods:["POST", "GET"]
+    
+    }
+
+));
 app.use(cookieParser());
 app.use(express.json());
 app.use('/uploads',express.static(__dirname + '/uploads'));
 
-
+app.get("/",(req,res) => {
+    res.json("Hello");
+})
 mongoose.connect('mongodb+srv://user2000:test123@cluster0.6rjcjzf.mongodb.net/?retryWrites=true&w=majority');
 
 app.get('/',(req,res)=>{
@@ -138,6 +147,5 @@ app.get('/post/:id',async (req,res) => {
 })
 
 app.listen(4000);
-//gXh3ljN7RhgzZUco
-//mongodb+srv://blog:gXh3ljN7RhgzZUco@cluster0.6rjcjzf.mongodb.net/?retryWrites=true&w=majority
+
 
