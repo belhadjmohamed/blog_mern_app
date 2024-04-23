@@ -22,6 +22,10 @@ app.use('/uploads',express.static(__dirname + '/uploads'));
 
 mongoose.connect('mongodb+srv://user2000:test123@cluster0.6rjcjzf.mongodb.net/?retryWrites=true&w=majority');
 
+app.get('/',(req,res)=>{
+    res.json('hello');
+} )
+
 app.post('/register', async (req,res)=>{
     const {username,password} = req.body;
     try{

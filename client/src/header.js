@@ -1,10 +1,13 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { UserContext } from "./userContext";
+import { HiViewList } from "react-icons/hi";
 
 
 export default function Header(){
     const {setUserInfo,userInfo} = useContext(UserContext);
+
+    const [headerlist,setheaderlist] = useState(false)
 
     useEffect(() => {
       fetch('http://localhost:4000/profile',{
@@ -26,22 +29,38 @@ export default function Header(){
 
     const username =userInfo?.username;
     
-
     return (
       <header>
-        <Link to='/' className='logo'>My Blog Site</Link>
+        <div className="headerlogo">
+          <img src="/572-768x591.png" alt="log"/>
+          <Link to='/' className='logo'>My Blog Site</Link>
+        </div>
         <nav>
           {username && (
-            <>
-              <Link to={"/create"}>Create new post</Link>
-              <Link to={"/"} onClick={logout}>Logout</Link>
-            </>
+            <div className="headernav">
+              <div className="iconlist">
+                <HiViewList className="iconlistbtn" onClick={() => setheaderlist(!headerlist)}/>
+                {headerlist && <div className="mobilelistnav">
+                  <p><Link style={{ textDecoration: 'none', color: 'inherit' }} to={"/create"} >Create new post</Link></p>
+                  <p><Link style={{ textDecoration: 'none', color: 'inherit' }} to={"/"} onClick={logout}>Logout</Link></p>
+                </div>}
+              </div>
+              <Link style={{ textDecoration: 'none', color: 'inherit' }} to={"/create"}><p className="createnewpostnavbar">Create new post</p></Link>
+              <Link style={{ textDecoration: 'none', color: 'inherit' }} to={"/"} onClick={logout}><p className="logoutnavbar">Logout</p></Link>
+            </div>
           )}
           {!username && (
-            <>
-              <Link to='/login'> Login</Link> 
-              <Link to='/register'> Register</Link> 
-            </>
+            <div className="headernav">
+               <div className="iconlist">
+                <HiViewList className="iconlistbtn" onClick={() => setheaderlist(!headerlist)} />
+                {headerlist && <div className="mobilelistnav">
+                  <p><Link style={{ textDecoration: 'none', color: 'inherit' }} to={"/login"} >Login</Link></p>
+                  <p><Link style={{ textDecoration: 'none', color: 'inherit' }} to={"/register"} onClick={logout}>Register</Link></p>
+                </div>}
+              </div>
+              <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/login'><p className="createnewpostnavbar">Login</p> </Link> 
+              <Link style={{ textDecoration: 'none', color: 'inherit' }} to='/register'><p className="logoutnavbar"> Register</p></Link> 
+            </div>
           )}
         </nav>
       </header>

@@ -11,10 +11,10 @@ export default function IndexPage(){
         });
     }, []);
     return(
-        <>
+        <div className="allposts">
             {posts.length > 0 && posts.map(post => (
                 <Post {...post} />
             ))}
-        </>
+        </div>
     );
 }
